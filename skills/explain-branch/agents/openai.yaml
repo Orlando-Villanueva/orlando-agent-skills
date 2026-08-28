@@ -1,0 +1,4 @@
+interface:
+  display_name: "Explain Branch"
+  short_description: "Understand a branch from behavior to code"
+  default_prompt: "Use $explain-branch to walk me through how the current feature branch works."

@@ -22,6 +22,13 @@ The skills are intentionally independent. `shape-issue` is a useful upstream
 companion when work is not yet clear; `collaborative-implementation` can begin
 from any sufficiently clear request or issue.
 
+### `explain-branch`
+
+Explains a local feature branch or its checked-out working-tree changes from
+user-visible behavior through the relevant code paths and tests. It is for
+teaching-oriented implementation walkthroughs, rather than defect-first review
+or repair work.
+
 ## Install
 
 The recommended installer is the open `skills` CLI. Run the command for the
@@ -38,6 +45,12 @@ npx skills add Orlando-Villanueva/orlando-agent-skills --skill shape-issue
 
 ```sh
 npx skills add Orlando-Villanueva/orlando-agent-skills --skill collaborative-implementation
+```
+
+### `explain-branch`
+
+```sh
+npx skills add Orlando-Villanueva/orlando-agent-skills --skill explain-branch
 ```
 
 For a non-interactive, global installation into Codex, add `--global`, target
