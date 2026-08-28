@@ -1,0 +1,53 @@
+#!/bin/sh
+
+set -eu
+
+repository_root=$(CDPATH= cd -- "$(dirname -- "$0")/.." && pwd)
+skills_root="$repository_root/skills"
+status=0
+found=0
+seen_names=''
+
+fail() {
+    printf '%s\n' "error: $*" >&2
+    status=1
+}
+
+for skill_file in "$skills_root"/*/SKILL.md; do
+    [ -f "$skill_file" ] || continue
+    found=1
+    skill_dir=$(basename "$(dirname "$skill_file")")
+
+    first_line=$(sed -n '1p' "$skill_file")
+    second_delimiter=$(sed -n '2,/^---$/p' "$skill_file" | tail -n 1)
+    if [ "$first_line" != '---' ] || [ "$second_delimiter" != '---' ]; then
+        fail "$skill_file must begin with closed YAML front matter"
+        continue
+    fi
+
+    front_matter=$(sed -n '2,/^---$/p' "$skill_file" | sed '$d')
+    name=$(printf '%s\n' "$front_matter" | sed -n 's/^name:[[:space:]]*//p' | head -n 1)
+    description=$(printf '%s\n' "$front_matter" | sed -n 's/^description:[[:space:]]*//p' | head -n 1)
+    body=$(sed -n '/^---$/,$p' "$skill_file" | sed '1d')
+
+    [ -n "$name" ] || fail "$skill_file is missing front-matter name"
+    [ -n "$description" ] || fail "$skill_file is missing front-matter description"
+    [ -n "$(printf '%s' "$body" | tr -d '[:space:]')" ] || fail "$skill_file has no Markdown body"
+
+    if [ -n "$name" ] && [ "$name" != "$skill_dir" ]; then
+        fail "$skill_file name '$name' does not match directory '$skill_dir'"
+    fi
+
+    case "\n$seen_names\n" in
+        *"\n$name\n"*) fail "$skill_file duplicates skill name '$name'" ;;
+        *) seen_names="${seen_names}\n${name}" ;;
+    esac
+done
+
+[ "$found" -eq 1 ] || fail "no skills found under $skills_root"
+
+if [ "$status" -eq 0 ]; then
+    printf '%s\n' 'Validated portable skill structure successfully.'
+fi
+
+exit "$status"
