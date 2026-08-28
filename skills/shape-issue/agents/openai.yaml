@@ -1,0 +1,4 @@
+interface:
+  display_name: "Shape Issue"
+  short_description: "Shape bounded, implementation-open work issues"
+  default_prompt: "Use $shape-issue to turn this request into an outcome-bounded, implementation-open issue."

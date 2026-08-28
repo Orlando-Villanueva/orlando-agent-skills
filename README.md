@@ -22,23 +22,34 @@ The skills are intentionally independent. `shape-issue` is a useful upstream
 companion when work is not yet clear; `collaborative-implementation` can begin
 from any sufficiently clear request or issue.
 
-## Install one skill
+## Install
 
-Clone this repository, then copy or symlink only the skill directory your host
-recognizes. For example, a host that reads skills from `~/.agents/skills`:
+The recommended installer is the open `skills` CLI. Run the command for the
+specific skill you want; it will guide you through choosing a supported agent
+and install scope.
+
+### `shape-issue`
 
 ```sh
-git clone https://github.com/Orlando-Villanueva/orlando-agent-skills.git
-mkdir -p ~/.agents/skills
-ln -s "$PWD/orlando-agent-skills/skills/shape-issue" ~/.agents/skills/shape-issue
+npx skills add Orlando-Villanueva/orlando-agent-skills --skill shape-issue
 ```
 
-To install `collaborative-implementation`, replace the directory name in both
-places. Copying the directory instead of symlinking is equally valid and is
-often better for immutable or managed environments.
+### `collaborative-implementation`
 
-See [compatibility notes](docs/compatibility.md) for the portable contract and
-host-specific installation considerations.
+```sh
+npx skills add Orlando-Villanueva/orlando-agent-skills --skill collaborative-implementation
+```
+
+For a non-interactive, global installation into Codex, add `--global`, target
+Codex with `--agent codex`, and accept the choices with `--yes`. For example:
+
+```sh
+npx skills add Orlando-Villanueva/orlando-agent-skills --skill shape-issue --global --agent codex --yes
+```
+
+If Node.js or the CLI cannot be used, manually copy a directory from `skills/`
+into the configured skill location for your host. See the
+[compatibility notes](docs/compatibility.md) for that fallback.
 
 ## Validate
 

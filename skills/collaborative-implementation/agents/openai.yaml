@@ -1,0 +1,4 @@
+interface:
+  display_name: "Collaborative Implementation"
+  short_description: "Build through shared decisions and checkpoints"
+  default_prompt: "Use $collaborative-implementation to build this work with me through discussed slices and meaningful commits."
