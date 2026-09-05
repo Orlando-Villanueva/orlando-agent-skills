@@ -1,6 +1,6 @@
 ---
 name: collaborative-implementation
-description: Implement a work issue or direct request with the user through discussed slices, shared decisions, verified checkpoints, and meaningful commits. Use when the user wants to understand and influence the implementation as it develops instead of delegating it end to end.
+description: Implement a work issue or direct request with the user on a dedicated branch through discussed slices, shared decisions, verified checkpoints, and meaningful history. Use when the user wants to understand and influence the implementation as it develops instead of delegating it end to end.
 ---
 
 # Collaborative Implementation
@@ -9,11 +9,21 @@ The deliverables are both a correct implementation and the user's continuing und
 
 Accept a work issue from any available tracker or a direct request in the current conversation, including a local specification. Use the available connector to fetch a referenced issue and relevant context, but keep the workflow independent of any particular tracker, agent harness, or repository stack.
 
+## Start on a dedicated branch
+
+Before making any code change, inspect the repository status and its branch-naming conventions. For each new implementation effort, create and check out a dedicated branch from the current `HEAD`. Derive a concise name from the issue identifier or requested outcome and follow established repository conventions.
+
+If the session is resuming the same implementation effort and its dedicated branch is already checked out, continue on it rather than creating another branch. Do not reuse an existing branch merely because its name matches, and never replace, delete, or reset a branch to satisfy this requirement.
+
+Preserve unrelated working-tree changes. If they make creating or checking out the branch unsafe, or if the intended branch name already exists, stop before editing and ask the user how to proceed. If the environment has no branch-capable version control, explain that the required isolation cannot be established and do not make code changes.
+
+Creating the branch does not authorize commits or pushes; follow the user's explicit authorization and repository policies for those actions.
+
 ## Establish the working agreement
 
 Read the source requirements and inspect enough of the environment to understand where the change belongs. Build a lightweight, provisional map of likely areas or slices; plan only the next slice in detail.
 
-At the outset, determine whether the user wants commits created during the session. If they have not said, propose committing accepted milestones and obtain agreement before the first commit.
+Leave changes uncommitted and unpushed unless the user explicitly authorizes those actions. Do not solicit commit or push authorization; apply the history guidance below only when authorized.
 
 If the issue already prescribes implementation choices, treat genuine settled decisions as constraints and explain how they map to the current environment. Reopen one only when the environment contradicts it, it is no longer viable, implementation exposes an unaddressed consequence, or the user wants to reconsider it.
 
