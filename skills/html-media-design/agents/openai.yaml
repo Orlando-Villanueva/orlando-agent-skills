@@ -1,0 +1,4 @@
+interface:
+  display_name: "HTML Media Design"
+  short_description: "Design exact branded media with HTML and browser rendering"
+  default_prompt: "Use $html-media-design to create this visual as editable HTML and export it from a browser."

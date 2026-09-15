@@ -29,6 +29,13 @@ user-visible behavior through the relevant code paths and tests. It is for
 teaching-oriented implementation walkthroughs, rather than defect-first review
 or repair work.
 
+### `html-media-design`
+
+Creates posters, feature graphics, announcement images, social cards, and other
+exactly sized media as editable HTML/CSS rendered in a browser. Image generation
+is an optional source for visual ingredients; final typography and composition
+remain deterministic and reusable.
+
 ## Install
 
 The recommended installer is the open `skills` CLI. Run the command for the
@@ -51,6 +58,12 @@ npx skills add Orlando-Villanueva/orlando-agent-skills --skill collaborative-imp
 
 ```sh
 npx skills add Orlando-Villanueva/orlando-agent-skills --skill explain-branch
+```
+
+### `html-media-design`
+
+```sh
+npx skills add Orlando-Villanueva/orlando-agent-skills --skill html-media-design
 ```
 
 For a non-interactive, global installation into Codex, add `--global`, target
