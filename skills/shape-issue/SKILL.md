@@ -14,14 +14,14 @@ Use the user's tracker and its conventions when one is available. Keep the workf
 1. Establish the problem, intended outcome, affected users or systems, and why the work matters.
 2. Clarify only ambiguities that materially change scope, behavior, acceptance, or non-negotiable constraints. Do not turn issue shaping into implementation planning.
 3. Separate the available information into:
-   - **settled decisions** that the implementation must preserve;
+   - **settled decisions** that the implementation must preserve, with compact rationale and source context when a constraint is non-obvious;
    - **observable requirements** that define success;
    - **implementation questions** to resolve later against the real environment;
    - **suggestions or context** that may inform the implementation but are not requirements.
 4. Write acceptance criteria that are observable and sufficient to judge completion. Include important exclusions, compatibility requirements, and failure behavior when they matter.
 5. Check that the issue is bounded enough to begin work but does not prescribe a file sequence, internal names, commit plan, or architecture that has not actually been decided.
 
-Do not erase technical decisions the user has already made. Record them as constraints and, when useful, include their rationale. If a proposed technical detail is merely one plausible implementation, keep it as non-binding context or leave it for implementation.
+Do not erase technical decisions the user has already made. Record them as constraints. For a non-obvious constraint whose relaxation would materially change compliance, safety, compatibility, user access, coordination, or scope, include the minimum useful provenance: why it exists, what consequence it prevents or enables, and the authoritative source or parent decision when available. Keep this to a sentence or short clause, and link to deeper context instead of copying parent discussion. A parent link supplements but does not replace the rationale; a future implementer should not need to consult the parent merely to explain why an in-scope constraint exists. Omit rationale that would not affect an implementation or scope decision.
 
 ## Deliver the issue
 
@@ -33,6 +33,6 @@ Follow existing tracker or team conventions instead of imposing a universal temp
 - settled constraints or decisions;
 - open implementation questions, only when they are already known.
 
-Before publishing, distinguish missing requirements from intentionally open implementation choices. Ask for confirmation when publishing would create or materially change an external issue.
+Before publishing, distinguish missing requirements from intentionally open implementation choices. Check that a future implementer can explain why each non-obvious in-scope constraint exists and what would be at risk if it were relaxed, while unrelated parent history remains omitted. Ask for confirmation when publishing would create or materially change an external issue.
 
 If the user explicitly asks to use the environment's persistent goal mechanism, store the outcome and acceptance criteria as the goal. Do not use the goal to freeze a step-by-step implementation plan.
