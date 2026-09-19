@@ -44,6 +44,21 @@ Do not present the first technically valid render as final when visible design i
 
 Capture only the canvas, not the surrounding browser viewport. If the browser's clipped capture applies an incorrect device scale, capture the full browser render and make one mechanical crop using the measured canvas bounds; do not redesign through the raster tool.
 
+### Manual capture handoff
+
+When the HTML composition is approved but automated export repeatedly introduces browser scaling, stitching, device-pixel-ratio, or edge artifacts, offer a manual capture handoff instead of prolonging exporter experimentation:
+
+- Keep the HTML/CSS as the canonical editable source.
+- Give the user direct links to the relevant HTML files and state the required aspect ratio and final pixel dimensions.
+- Ask the user to capture the complete canvas at the highest practical resolution. Small, consistent margins are acceptable when they can be removed mechanically.
+- Preserve the original capture unchanged.
+- Validate the capture before processing. Confirm that it contains the complete canvas, has sufficient resolution, and does not contain browser chrome, selection outlines, comment markers, or other transient UI.
+- Mechanically crop only the minimum necessary edges, resize once to the delivery dimensions using a high-quality resampler, and convert to the required color mode and file format.
+- If the capture omits content, is materially misaligned, or would require a substantial crop, request another capture instead of reconstructing, stretching, or creatively repairing it.
+- Inspect the processed file at full size and thumbnail size, checking especially for unexpected edge bands, distortion, clipping, and softness.
+
+Manual capture is a fallback delivery path, not a replacement for the reproducible browser export when that export is reliable.
+
 Verify the exported file's exact dimensions, format, opacity or alpha requirement, color space, and size limit. Visually inspect the final exported file again at full size and thumbnail size. Return both the editable HTML source and the final raster asset unless the user requests only one.
 
 Uploading, publishing, replacing a live asset, or deleting an existing asset remains a separate action requiring the user's applicable approval.
