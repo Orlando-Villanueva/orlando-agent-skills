@@ -1,0 +1,4 @@
+interface:
+  display_name: "Orchestrate"
+  short_description: "Coordinate bounded Codex subagent assignments"
+  default_prompt: "Use $orchestrate to coordinate bounded independent assignments and synthesize the results."

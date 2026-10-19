@@ -7,6 +7,12 @@ The document begins with YAML front matter containing a stable `name` and a
 short `description`, followed by Markdown instructions. Core skills do not
 depend on a runtime, package manager, network connector, or repository stack.
 
+`orchestrate` is an explicitly Codex-specific exception. It requires Codex
+subagent tools and the role roster described in its instructions. Installing the
+skill does not create those roles or configure their models. Other harnesses
+need an adapted version; the portable on-disk format alone does not make its
+workflow portable.
+
 This layout is designed for agent environments that discover or import a
 directory containing `SKILL.md`. It is also simple to copy into a host's
 configured skill directory.
@@ -47,8 +53,8 @@ copy instead of a symlink.
 - A skill must remain useful when installed by itself.
 - Core instructions must not require a particular tracker, shell, editor,
   repository layout, or provider connector.
-- Harness-specific instructions belong in a separately named adaptation, not
-  in the portable core.
+- Harness-specific skills must clearly declare their runtime dependencies and
+  be identified separately from the portable core in the catalog.
 - Optional tools may be mentioned conditionally, with a clear non-tool path.
 - A new compatibility claim should be verified in that host before it is
   advertised as supported.

@@ -16,6 +16,8 @@ first written.
 - State outcomes and decision boundaries before prescribing mechanics.
 - Mark an integration as optional when it depends on a particular host,
   connector, tracker, or repository convention.
+- When a skill deliberately requires a specific host, declare that requirement
+  in the skill, catalog, and compatibility notes rather than claiming portability.
 
 ## Review checklist
 
@@ -30,5 +32,5 @@ Before submitting a change, confirm that:
 
 Prefer small changes supported by a real use case. Preserve behavior users may
 already rely on, explain incompatible changes in the pull request or release
-notes, and keep a harness-specific variant out of the core skill unless that
-dependency becomes a deliberate compatibility commitment.
+notes, and keep harness-specific requirements explicitly separate from the
+portable skills. A deliberate host-specific skill must document its prerequisites.

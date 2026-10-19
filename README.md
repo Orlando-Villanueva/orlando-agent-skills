@@ -1,7 +1,8 @@
 # Orlando Agent Skills
 
-Portable, outcome-oriented skills for agents that work with people rather than
-around them. Each skill is a standalone directory containing a `SKILL.md` file
+Outcome-oriented skills for agents that work with people rather than
+around them, including portable workflows and explicitly marked host-specific
+skills. Each skill is a standalone directory containing a `SKILL.md` file
 with YAML front matter and Markdown instructions.
 
 ## Included skills
@@ -36,6 +37,13 @@ exactly sized media as editable HTML/CSS rendered in a browser. Image generation
 is an optional source for visual ingredients; final typography and composition
 remain deterministic and reusable.
 
+### `orchestrate` (Codex-specific)
+
+Coordinates bounded independent assignments with Codex subagents while keeping
+decisions, approvals, integration, and synthesis with the parent. Requires Codex
+subagent tools and a configured role roster; it does not install roles or model
+configuration. Other harnesses need an adapted version.
+
 ## Install
 
 The recommended installer is the open `skills` CLI. Run the command for the
@@ -64,6 +72,12 @@ npx skills add Orlando-Villanueva/orlando-agent-skills --skill explain-branch
 
 ```sh
 npx skills add Orlando-Villanueva/orlando-agent-skills --skill html-media-design
+```
+
+### `orchestrate` (Codex-specific)
+
+```sh
+npx skills add Orlando-Villanueva/orlando-agent-skills --skill orchestrate --agent codex
 ```
 
 For a non-interactive, global installation into Codex, add `--global`, target
