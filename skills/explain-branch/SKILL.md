@@ -69,7 +69,16 @@ Spend the most attention on the smallest set of changes the user must understand
 
 Lead with a short statement of what the branch makes possible for the user or system, followed by what it does not implement.
 
-When several layers or stages interact, show a compact text flow before discussing details. Then walk through the implementation in runtime or data-flow order:
+When multiple stages, components, or systems interact and a diagram materially helps explain the implementation, include a rendered diagram before discussing details. Skip diagrams for simple changes. Choose the simplest useful format:
+
+- Use Mermaid for static architecture, request flows, sequences, and state transitions.
+- Use the Visualize plugin, when available, when interaction helps explain timing, branches, or changing state. It is optional, not a dependency; use Mermaid when a static diagram is sufficient.
+
+Build the diagram from inspected source, using repository and domain terminology. Show relevant boundaries such as browser/backend, synchronous/queued work, and persistence. Distinguish existing behavior from behavior added by the branch when that matters, keeping committed and applicable working-tree changes separate. Use the diagram as a map for the code walkthrough, without replacing the explanation or duplicating it.
+
+Plain-text arrows or ASCII art must not substitute for a useful rendered diagram. If rendering is unavailable, explain the flow in clear prose and state the limitation briefly.
+
+Then walk through the implementation in runtime or data-flow order:
 
 - group files by responsibility rather than listing every changed file;
 - highlight only the core files and link to exact local paths and relevant line numbers;
