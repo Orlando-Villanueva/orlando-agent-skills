@@ -77,6 +77,15 @@ these constraints, consider cost only when it does not materially reduce quality
 Do not downgrade implementation or consequential judgment merely to save
 parent-model usage.
 
+Prefer a lightweight role for bounded checks with concrete evidence, such as
+tracing callers, comparing schema constraints, or verifying deployment order.
+Use a higher-capability reviewer for independent defect discovery across
+interacting code paths or for judgment about a consequential edge case.
+Before choosing a role configured for medium or higher reasoning, identify the
+specific difficulty that warrants it. If a bounded check surfaces a question
+that needs deeper reasoning, escalate that question with the evidence already
+gathered.
+
 - `explorer` — Inventories, locating code, tracing execution paths, and gathering evidence.
 - Implementation role (commonly `worker`) — Bounded code, test, configuration, and migration changes, reproduction, and focused verification. Use the role the runtime designates for implementation.
 - `analyst` — First-pass evidence synthesis into a bounded decision.
